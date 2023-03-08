@@ -24,29 +24,34 @@ let weather = {
         document.querySelector('.speed').textContent = `Speed: ${speed} KM/H`;   
     },
 
+    setBackground: function() {
+        let containerBg = document.querySelector(".container");
+        let description = document.querySelector(".description").innerText;
+        switch(description) {
+             case "light rain":
+                 containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
+                 break;
+             case "snow":
+                 containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
+                 break;
+            case "light snow":
+                    containerBg.style.backgroundImage = "url('assets/images/light-snow.jpg')";
+                    break;
+             case "light intensity drizzle":
+                 containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
+                 break;
+             default:
+                 containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')"
+         }
+         setTimeout(weather.setBackground, 500);
+     },
+
+     
+
+
     search: function() {
         weather.fetchWeather(document.querySelector('.search-bar').value);
-    },
-
-    
-
-    setBackground: function() {
-       let containerBg = document.querySelector(".container");
-       switch(document.querySelector('.description').innerText) {
-            case "light rain":
-                containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
-                break;
-            case "snow":
-                containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-                break;
-            case "overcast clouds":
-                containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-                break;
-            default:
-                containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')"
-        }
     }
-
     // setBackground: function() {
     //     let containerBg = document.querySelector(".container");
     //     if(weather.description === "light rain") {
@@ -56,6 +61,7 @@ let weather = {
 }
 
 document.querySelector('button').addEventListener('click', function() {
-    weather.search();
     weather.setBackground();
+    weather.search();
+    
 });
