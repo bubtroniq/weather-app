@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHZlQgb0IVr_2ayclG9jcMvCL09ZIHzMU&callback=initMap"></script>
     <title>Weather App</title>
 </head>
 <body>
@@ -20,18 +21,41 @@
 
 
     <div class="container-info">
-        <p class="humidity"></p>
+        <!-- <p class="humidity"></p>
         <p class="speed"></p>
         <p class="country"></p>
-        <p class="coord"></p>
+        <p class="coord"></p> -->
     </div>
 
 
     <div class="detailed-weather">
         <p class="name stil"></p>
-        <p class="country2 stil"></p>
         <p class="region stil"></p>
+        <p class="stil" id="country"></p>
+        <p class="humidity stil"></p>
+        <p class="speed stil"></p>
+        <p class="country stil"></p>
+        <p class="coord stil"></p>
+        <p class="sunrise stil"></p>
+        <p class="sunset stil"></p>
     </div>
+
+    <div class="hourly">
+
+    </div>
+
+    <!-- <div class="hourly-weather">
+        <table>
+            <tr>
+                <td>14:00</td>
+            </tr>
+        </table>
+    </div> -->
+
+
+
+
+
 
     
 

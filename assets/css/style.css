@@ -33,7 +33,33 @@ input {
 
 .detailed-weather {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: .5em;
 
 }
+
+.hourly {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-wrap: wrap;
+    max-width: 65%;
+    margin: 0 auto;
+}
+
+.hour {
+    max-width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-size: 1.5em;
+    background-color: grey;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: red;
+    font-size: 2em;
+}
+

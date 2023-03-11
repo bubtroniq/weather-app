@@ -1,18 +1,48 @@
-let q = "telford";
+let q = document.querySelector('.search-bar').value;
 
-const fetchDetailedWeather = () => {
-fetch("http://api.weatherapi.com/v1/current.json?key=4a95f442039e45748c1235242231003&q=" + q + "&aqi=no&alerts=yes")
-.then((response) => response.json())
-.then((data) => displayDetailedWeather(data))
-}
+const fetchDetailedWeather = (q) => {
+    
+    fetch("http://api.weatherapi.com/v1/forecast.json?key=4a95f442039e45748c1235242231003&q=" + q + "&days=10&aqi=no&alerts=yes")
+        .then((response) => response.json())
+        .then((data2) => displayDetailedWeather(data2))
+};
 
-const displayDetailedWeather = (data) => {
-    const {name, country, region} = data.location;
-  ;
+const displayDetailedWeather = (data2) => {
+    const {name, country, region} = data2.location;
+    const {sunrise, sunset} = data2.forecast.forecastday[0].astro;
     document.querySelector('.name').textContent = name;
-    document.querySelector('.country2').textContent = country;
+    document.querySelector('#country').textContent = country;
     document.querySelector('.region').textContent = region;
-}
+    document.querySelector('.sunrise').textContent = `Sunrise: ${sunrise}`;
+    document.querySelector('.sunset').textContent = `Sunset: ${sunset}`;
+
+
+    for(day of data2.forecast.forecastday) {
+        console.log(day); 
+        let h3 = document.createElement('h3');
+        h3.textContent = day.date;
+        let div = document.createElement('div');
+        let hourly = document.querySelector('.hourly');
+        hourly.appendChild(div);
+        div.appendChild(h3);
+
+        for(hour of day.hour) {
+            console.log(hour.time, hour.temp_c);
+            let p = document.createElement('p');
+            p.textContent = `Date and time: ${hour.time}, Temperature: ${hour.temp_c} °C, ${hour.condition.text}`;
+            p.classList.add('hour');
+            let div = document.querySelector('.hourly');
+            div.appendChild(p);
+        }
+    }
+    
+    console.log(sunrise);
+    console.log(sunset);
+    console.log(country);
+};
+
+
+
 
 
 fetchDetailedWeather();
@@ -47,7 +77,7 @@ let apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
         document.querySelector('.description').innerText = description;
         document.querySelector('.temp').innerHTML = `Temperature:  + ${temp}<span>&#8451;</span>`;
         document.querySelector('.humidity').innerHTML = `Humidity: ${humidity}<span>&#37;</span>`;
-        document.querySelector('.speed').textContent = `Speed: ${speed} KM/H`;   
+        document.querySelector('.speed').textContent = `Wind Speed: ${speed} KM/H`;   
         document.querySelector('.country').innerText = `Country: ${country}`;
         document.querySelector('.coord').textContent = `Coordinates: Lat:${lat} + Lon:${lon};`
 };      
@@ -76,6 +106,7 @@ const setBackground = () => {
 
 const search = () => {
         fetchWeather(document.querySelector('.search-bar').value);
+        fetchDetailedWeather(document.querySelector('.search-bar').value);
 };
     // setBackground: function() {
     //     let containerBg = document.querySelector(".container");
@@ -138,3 +169,6 @@ document.querySelector('button').addEventListener('click', () => {
 //   window.initMap = initMap;
 
     
+
+
+// Google maps
