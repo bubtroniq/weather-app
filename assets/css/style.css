@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 100%;
+    max-height: 100%;
+    color: white;
+    font-size: 1.5em;
+    padding: 1em;
+    border-radius: 5px;
+    background-image: cover;
+}
+
+input {
+    width: 70%;
+    height: 25px;
+    background-color: transparent;
+}
+
+
+.stil {
+    font-size: 2em;
+    font-weight: 700;
+    color: #0d0ac7;
+    text-align: center;
+    padding: .5em;
+    margin: 1em auto;
+}
+
+
+.detailed-weather {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+
+}
