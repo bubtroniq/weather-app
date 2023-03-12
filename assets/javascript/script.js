@@ -1,6 +1,5 @@
 
-
-// let q = document.querySelector('.search-bar').value;
+let q = document.querySelector('.search-bar').innerText;
 
 const fetchDetailedWeather = (q) => {
     
@@ -53,16 +52,16 @@ const displayDetailedWeather = (data2) => {
     console.log(country);
 };
 
-const fetchWeather = (city) => {
+const fetchWeather = (q) => {
 let apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + q
         +"&units=metric&APPID=" 
         + apiKey)
         .then((response) => response.json())
         .then((data) => displayWeather(data))
 };
 
- const displayWeather = (data,) => {
+ const displayWeather = (data) => {
         const {country} = data.sys;
         const {name} = data;
         const {icon, description} = data.weather[0];
@@ -79,31 +78,33 @@ let apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
         document.querySelector('.speed').textContent = `Wind Speed: ${speed} KM/H`;   
         document.querySelector('.country').innerText = `Country: ${country}`;
         document.querySelector('.coord').textContent = `Coordinates: Lat :${lat} °, Lon: ${lon} °`;
-
 };   
-         
+     
 
-const setBackground = () => {
-        let containerBg = document.querySelector(".container");
-        let description = document.querySelector(".description").innerText;
-        switch(description) {
-             case "light rain":
-                 containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
-                 break;
-             case "snow":
-                 containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-                 break;
-            case "light snow":
-                    containerBg.style.backgroundImage = "url('assets/images/light-snow.jpg')";
-                    break;
-             case "light intensity drizzle":
-                 containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-                 break;
-             default:
-                 containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')"
-         }
-         setTimeout(containerBg.setBackground, 500);
-};
+// const setBackground = () => {
+//     let containerBg = document.querySelector(".container");
+//     let description = document.querySelector(".description").innerText;
+//     switch(description) {
+//          case "light rain":
+//              containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
+//              break;
+//          case "snow":
+//              containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
+//              break;
+//         case "light snow":
+//                 containerBg.style.backgroundImage = "url('assets/images/light-snow.jpg')";
+//                 break;
+//          case "light intensity drizzle":
+//              containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
+//              break;
+//          default:
+//              containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')"
+//      }
+//      setTimeout(containerBg.setBackground, 2000);
+     
+// };
+
+
 
 const search = () => {
         fetchWeather(document.querySelector('.search-bar').value);
@@ -112,24 +113,25 @@ const search = () => {
 
 
 document.querySelector('button').addEventListener('click', () => {
-    setBackground();
     search();
+    // setBackground();
+    
     
 });
-// Initialize and add the map
-function initMap() {
-    // The location of Uluru
-    const uluru = { lat: -25.344, lng: 131.031 };
-    // The map, centered at Uluru
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: uluru,
-    });
-    // The marker, positioned at Uluru
-    const marker = new google.maps.Marker({
-      position: uluru,
-      map: map,
-    });
-  }
+// // Initialize and add the map
+// function initMap() {
+//     // The location of Uluru
+//     const uluru = { lat: -25.344, lng: 131.031 };
+//     // The map, centered at Uluru
+//     const map = new google.maps.Map(document.getElementById("map"), {
+//       zoom: 4,
+//       center: uluru,
+//     });
+//     // The marker, positioned at Uluru
+//     const marker = new google.maps.Marker({
+//       position: uluru,
+//       map: map,
+//     });
+//   }
   
-  window.initMap = initMap;
+//   window.initMap = initMap;
