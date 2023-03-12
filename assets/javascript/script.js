@@ -1,4 +1,24 @@
-let q = document.querySelector('.search-bar').value;
+// Google maps
+
+// Initialize and add the map
+function initMap() {
+    // The location of Uluru
+const uluru = { lat: -25.344, lng: 131.031 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 5,
+      center: uluru,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+}
+  
+  window.initMap = initMap;
+
+// let q = document.querySelector('.search-bar').value;
 
 const fetchDetailedWeather = (q) => {
     
@@ -23,6 +43,16 @@ const displayDetailedWeather = (data2) => {
         h3.textContent = day.date;
         let div = document.createElement('div');
         let hourly = document.querySelector('.hourly');
+        let p = document.createElement('p');
+        let para = document.createElement('p');
+        let para2 = document.createElement('p');
+        para2.textContent = `Wind speed: ${day.day.avgvis_km} km/h, Humidity: ${day.day.avghumidity} %, Chance of rain: ${day.day.daily_chance_of_rain} %, Chance of snow: ${day.day.daily_chance_of_snow} %`;
+        para.textContent = `Sunrise: ${day.astro.sunrise}, Sunset: ${day.astro.sunset}, Conditions: ${day.day.condition.text}`;
+        p.textContent = `Date: ${day.date}, Average temp: ${day.day.avgtemp_c} °C, Max temp: ${day.day.maxtemp_c} °C, Min temp: ${day.day.mintemp_c} °C`;
+        let daily = document.querySelector('.daily');
+        p.appendChild(para);
+        p.appendChild(para2);
+        daily.appendChild(p);
         hourly.appendChild(div);
         div.appendChild(h3);
 
@@ -40,7 +70,6 @@ const displayDetailedWeather = (data2) => {
     console.log(sunset);
     console.log(country);
 };
-
 
 
 
@@ -171,4 +200,3 @@ document.querySelector('button').addEventListener('click', () => {
     
 
 
-// Google maps
