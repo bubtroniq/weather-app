@@ -78,7 +78,7 @@ let apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
         document.querySelector('.humidity').innerHTML = `Humidity: ${humidity}<span>&#37;</span>`;
         document.querySelector('.speed').textContent = `Wind Speed: ${speed} KM/H`;   
         document.querySelector('.country').innerText = `Country: ${country}`;
-        document.querySelector('.coord').textContent = `Coordinates: Lat :${lat}, Lon: ${lon}`;
+        document.querySelector('.coord').textContent = `Coordinates: Lat :${lat} °, Lon: ${lon} °`;
 
 };   
          
@@ -119,10 +119,7 @@ document.querySelector('button').addEventListener('click', () => {
 // Initialize and add the map
 function initMap() {
     // The location of Uluru
-    // let coords = (data) => {
-    //     let {lat, lon} = data.coord;
-    //     console.log(lat, lon);
-        const uluru = { lat: -25.344, lng: 131.031 };
+    const uluru = { lat: -25.344, lng: 131.031 };
     // The map, centered at Uluru
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 4,
@@ -134,5 +131,5 @@ function initMap() {
       map: map,
     });
   }
-
+  
   window.initMap = initMap;
