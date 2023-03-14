@@ -6,14 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" type="text/css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
 
     <title>Weather App</title>
 </head>
 
 <body>
+
+ 
     <div class="container">
         <div class="input">
-            <input type="text" class="search-bar" name="search" placeholder="Search wather information in your City">
+            <input type="text" class="search-bar" name="search" placeholder="Search wather information in your City" value="moreni">
             <button>Search</button>
         </div>
         <div>
@@ -21,36 +27,31 @@
             <img src="" alt="" class="icon"></p>
             <p class="description stil"></p>
             <p class="temp stil"></p>
-        </div>
-
-        <div class="detailed-weather">
-            <p class="name stil"></p>
-            <p class="region stil"></p>
-            <p class="stil" id="country"></p>
+            <p class="feels stil"></p>
             <p class="humidity stil"></p>
             <p class="speed stil"></p>
-            <!-- <p class="country stil"></p> -->
+            <p class="country stil"></p>
             <p class="coord stil"></p>
-            <p class="sunrise stil"></p>
-            <p class="sunset stil"></p>
         </div>
 
+        <div id="map"></div>
     </div>
 
     
-    <div>
-        <div class="daily">
-            <h2 class="stil">Daily Temperature</h2>
 
-        </div>
+
+    
+    <!-- <div>
+        <button>Daily Weather</button>
+        <div class="daily"></div></div>
 
         <div class="hourly">
-            <h2 class="stil">Hourly Temperature for the next 9 days</h2>
+            <h2 class="stil">Hourly Temperature for the next 10 days</h2>
 
         </div>
     </div>
 
-    <!-- <div class="hourly-weather">
+    <div class="hourly-weather">
         <table>
             <tr>
                 <td>14:00</td>
@@ -66,9 +67,7 @@
 
 
 
-
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADxN8xRmZLoeX7fg1QgHUhlM7FOCz2Yjs&callback=initMap"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="assets/javascript/script.js"></script>
 
 </body>

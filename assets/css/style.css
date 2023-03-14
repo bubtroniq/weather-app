@@ -15,6 +15,7 @@ body {
     background-color: #110f0f4f ;
 }
 
+
 input {
     width: 40%;
     height: 2em;
@@ -27,6 +28,8 @@ button {
     padding: 1em 3em;
     font-size: 1em;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .input {
@@ -39,7 +42,7 @@ button {
 
 
 .stil {
-    font-size: 1em;
+    font-size: 2em;
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -48,6 +51,7 @@ button {
 .container img {
     display: block;
     margin: 0 auto;
+    height: 200px;
 }
 
 
@@ -85,11 +89,14 @@ button {
 }
 
 .daily {
-    max-width: 65%;
+    max-width: 80%;
     background-image: url('../images/background2.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
 }
 
 h3 {
@@ -99,7 +106,7 @@ h3 {
 }
 
 #map {
-    height: 600px; /* The height is 400 pixels */
-    width: 100%; /* The width is the width of the web page */
+    height: 500px;
+    margin: 0 auto;
 }
 
