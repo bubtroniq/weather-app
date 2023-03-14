@@ -8,65 +8,64 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" type="text/css">
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-     crossorigin=""></script>
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
     <title>Weather App</title>
 </head>
 
 <body>
+    <!-- Main section -->
+    <header>
+        <h1>Search Weather in more than 200.000 cities across the world</h1>
+    </header>
 
- 
-    <div class="container">
+    <section>
+        <!-- Div where is displayed weather info -->
         <div class="input">
-            <input type="text" class="search-bar" name="search" placeholder="Search wather information in your City" value="moreni">
+            <!-- Input element -->
+            <input type="text" class="search-bar" name="search" placeholder="Search weather">
+            <!-- Search button -->
             <button>Search</button>
         </div>
-        <div>
-            <p class="city stil"></p>
-            <img src="" alt="" class="icon"></p>
-            <p class="description stil"></p>
-            <p class="temp stil"></p>
-            <p class="feels stil"></p>
-            <p class="humidity stil"></p>
-            <p class="speed stil"></p>
-            <p class="country stil"></p>
-            <p class="coord stil"></p>
-        </div>
+        
+        
+        
+        <div class="container">
+            
+            
+            <!-- Div with weather info from the API -->
+            <div>
+                <p class="city stil"></p>
+                <img src="" alt="" class="icon"></p>
+                <p class="description stil"></p>
+                <p class="temp stil"></p>
+                <p class="feels stil"></p>
+                <p class="humidity stil"></p>
+                <p class="speed stil"></p>
+                <p class="country stil"></p>
+                <p class="coord stil"></p>
+            </div>
 
+            <!-- Map element -->
+
+            
+        </div>
         <div id="map"></div>
-    </div>
-
-    
+    </section>
 
 
-    
-    <!-- <div>
-        <button>Daily Weather</button>
-        <div class="daily"></div></div>
+    <!-- Footer -->
 
-        <div class="hourly">
-            <h2 class="stil">Hourly Temperature for the next 10 days</h2>
-
-        </div>
-    </div>
-
-    <div class="hourly-weather">
-        <table>
-            <tr>
-                <td>14:00</td>
-            </tr>
-        </table>
-    </div> -->
+    <footer>
+        <div>Footer</div>
+    </footer>
 
 
 
 
 
 
-
-
-
+    <!-- Script links for leafletJS and custom JavaScript code -->
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="assets/javascript/script.js"></script>
 
