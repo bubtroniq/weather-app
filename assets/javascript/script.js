@@ -1,15 +1,27 @@
 //Fetching Data from weatherAPI
 
-let city = document.getElementsByTagName('input').innerText;
+
+// let city = document.getElementsByTagName('input').innerText;
 const fetchWeather = (city) => {
     const apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city
-        + "&units=metric&APPID="
-        + apiKey)
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city+ "&units=metric&APPID=" + apiKey)
         .then((response) => response.json())
-        .then((data) => showWeather(data));
+        .then((data) => showWeather(data))
+        //catch an error here
+        .catch((error) => {
+           console.log('The ERROR is: ', error);
+        });
+        if(document.querySelector('input').value === '') {
+            document.querySelector(".error").innerText = "You must enter a city name!";
+        } else if (document.querySelector('input').value !== '') {
+            document.querySelector('.error').innerText = '';
+        };
 
 };
+
+// } else 
+//     document.querySelector('.error').innerText = "";
+// }
 
 // Function to display weather on the page 
 const showWeather = (data) => {
@@ -19,7 +31,6 @@ const showWeather = (data) => {
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
-
 
  
 
@@ -43,6 +54,7 @@ const showWeather = (data) => {
     document.querySelector('.country').innerText = `Country: ${country}`;
 
     document.querySelector('.coord').textContent = `Coordinates: Lat :${latitude} °, Lon: ${longitude} °`;
+
 
     // Function for changing background image regarding description value
 
@@ -75,6 +87,7 @@ const showWeather = (data) => {
          
     };
 
+
     setBackground();
 
 
@@ -98,11 +111,16 @@ const showWeather = (data) => {
     mymap.setView([latitude, longitude], 13);
     marker.setLatLng([latitude, longitude]);
 }
-
 // Fetch weather callback function
 
 const search = () => {
     fetchWeather(document.querySelector('input').value);
+    //catch another error here
+    try{
+    showWeather();
+    } catch(error) {
+        console.log(error);
+    }
 };
 
 
@@ -111,8 +129,6 @@ const search = () => {
 // Event listener to display weather and location on map clicking search button
 document.querySelector('button').addEventListener('click', () => {
     search();
-    showWeather();
-    setBackground()
 });
 
 
