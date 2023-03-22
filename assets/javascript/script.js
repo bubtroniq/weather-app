@@ -1,29 +1,64 @@
 //Fetching Data from weatherAPI
 
 
-// let city = document.getElementsByTagName('input').innerText;
+
 const fetchWeather = (city) => {
     const apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city+ "&units=metric&APPID=" + apiKey)
-        .then((response) => response.json())
+        .then((response) => {
+            if(!response.ok) {
+                return response.text().then(text => document.querySelector('.error').innerText = 'Cant find your city!')
+               } else {
+               return response.json();
+             }    
+            })
         .then((data) => showWeather(data))
         //catch an error here
         .catch((error) => {
-           console.log('The ERROR is: ', error);
-        });
-        if(document.querySelector('input').value === '') {
-            document.querySelector(".error").innerText = "You must enter a city name!";
-        } else if (document.querySelector('input').value !== '') {
-            document.querySelector('.error').innerText = '';
-        };
+           console.log('ERROR is: ', error);        
+})};
 
+// Fetch weather callback function
+
+const search = () => {
+    let city = document.querySelector('input').value;
+        fetchWeather(city);
+   
+    //catch another error here
+    try{
+    showWeather();
+    } catch(error) {
+        console.log('THIS ERROR is: ', error);
+    }
 };
 
-// } else 
-//     document.querySelector('.error').innerText = "";
-// }
 
-// Function to display weather on the page 
+
+
+// Event listener to display weather and location on map clicking search button
+document.querySelector('button').addEventListener('click', () => {
+    let city = document.querySelector('input').value;
+    //Conditionals for user feedback 
+    if(city === '') {
+        document.querySelector('.error').innerText = 'Enter a location';
+    } else if(city !== '') {
+        document.querySelector('.error').innerText = '';
+        search();
+    }
+    
+});
+
+
+//Event listener to search on pressing Enter key
+
+let input = document.querySelector('input');
+input.addEventListener('keypress', (event) => {
+    if (event.key === "Enter") {
+        document.querySelector('button').click();
+    }
+})
+
+// Function to display weather on the page
 const showWeather = (data) => {
     const { lat: latitude, lon: longitude } = data.coord;
     const { country } = data.sys;
@@ -31,11 +66,6 @@ const showWeather = (data) => {
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
-
- 
-
-
-
     // console.log(data, name, icon, description, temp, humidity, speed, latitude, longitude);
     document.querySelector('.city').innerText = "Weather in " + name;
 
@@ -54,7 +84,6 @@ const showWeather = (data) => {
     document.querySelector('.country').innerText = `Country: ${country}`;
 
     document.querySelector('.coord').textContent = `Coordinates: Lat :${latitude} °, Lon: ${longitude} °`;
-
 
     // Function for changing background image regarding description value
 
@@ -83,17 +112,9 @@ const showWeather = (data) => {
             default:
                  containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')"
          }
-        //  setTimeout(containerBg.setBackground, 2000);
          
     };
-
-
     setBackground();
-
-
-
-
-
 
     //Displaying the map
     const mymap = L.map('map').setView([0, 0], 1);
@@ -105,39 +126,7 @@ const showWeather = (data) => {
     const tiles = L.tileLayer(tileUrl, { attribution });
     tiles.addTo(mymap);
 
-
-
     L.marker([latitude, longitude]).addTo(mymap);
     mymap.setView([latitude, longitude], 13);
     marker.setLatLng([latitude, longitude]);
 }
-// Fetch weather callback function
-
-const search = () => {
-    fetchWeather(document.querySelector('input').value);
-    //catch another error here
-    try{
-    showWeather();
-    } catch(error) {
-        console.log(error);
-    }
-};
-
-
-
-
-// Event listener to display weather and location on map clicking search button
-document.querySelector('button').addEventListener('click', () => {
-    search();
-});
-
-
-//Event listener to search on pressing Enter key
-
-let input = document.querySelector('input');
-input.addEventListener('keypress', (event) => {
-    if (event.key === "Enter") {
-        document.querySelector('button').click();
-    }
-})
-

@@ -65,6 +65,9 @@ After inserting a location in the text input and click search, two more divs wil
 - Had to setTimeout() on the changeBackground function to fix background picture in one click, otherwise 2 click requierd in order to set the proper background definded in switch statement.
 - Lots of issues with retrievieng coordinates from data object
 - After first search map is not updating with new coordinates
+- Alot of errors to be managed when fetching API data.
+- Background picture that is changing regarding the description message needs fixing on mobile view.
+- On second+ search map is not updating the new location
 
 
 
