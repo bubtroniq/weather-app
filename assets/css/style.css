@@ -77,7 +77,13 @@ button {
 
 
 #map {
-    height: 60vh;
-    width: 90%;
+    height: 80vh;
+    width: 80%;
     margin: 0 auto 2em;
+}
+
+.error {
+    text-align: center;
+    color: yellow;
+    font-size: 2em;
 }
