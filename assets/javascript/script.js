@@ -1,22 +1,24 @@
+/* jshint esversion: 11 */
 
-//Check fetch function
-const checkFetch = (response) => {
-    if (!response.ok) {
-        document.querySelector('.error').innerText = "Can't find your city!";
-    }
-    return response;
-};
+let mapGenerated = false;
+let mymap, marker, results, countryCode, countryName;
+
+const weatherContainer = document.getElementById("container");
+const mapContainer = document.getElementById("map");
 
 //Fetching Data from weatherAPI
-const fetchWeather = (city) => {
+function fetchWeather(city) {
     const apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=" + apiKey)
-        .then(checkFetch)
-        .then((response) => response.json())
-        .then((data) => {
-            showWeather(data);
-            displayMap(data);
+        .then((response) => {
+            //Conditionals cheking for good/bad response
+            if (!response.ok) {
+                return response.text().then(text => document.querySelector('.error').innerText = 'Cant find your city!');
+            } else {
+                return response.json();
+            }
         })
+        .then((data) => showWeather(data))
         //catch errors from bad user input
         .catch((error) => {
             console.log('ERROR is: ', error);
@@ -24,8 +26,15 @@ const fetchWeather = (city) => {
 };
 
 // Fetch weather callback function
-const search = () => {
+function search() {
     let city = document.querySelector('input').value;
+    if (city.includes(",")) {
+        city = city.split(",")[0];
+    }
+    let countrySelect = document.getElementById("country");
+    countryCode = countrySelect.value;
+    countryName = countrySelect.options[countrySelect.selectedIndex].text;
+    city = `${city}, ${countrySelect}`;
     fetchWeather(city);
 
     //catch errors from bad user input
@@ -40,15 +49,16 @@ const search = () => {
 
 
 // Event listener to display weather and location on map clicking search button
-document.querySelector('button').addEventListener('click', () => {
+document.querySelector('#search-btn').addEventListener('click', () => {
     let city = document.querySelector('input').value;
     //Conditionals for user feedback 
     if (city === '') {
-        document.querySelector('.error').innerText = 'You must enter a location';
+        document.querySelector('.error').innerText = 'Enter a location';
+        weatherContainer.classList.add("hide");
+        mapContainer.classList.add("hide");
     } else if (city !== '') {
         document.querySelector('.error').innerText = '';
         search();
-        displayMap();
     }
 
 });
@@ -61,103 +71,76 @@ input.addEventListener('keypress', (event) => {
         document.querySelector('button').click();
     }
 });
-// Displaying the map
-const displayMap = (data) => {
-    try{
-    const { lat: latitude, lon: longitude } = data.coord;
-    const mymap = L.map('map').setView([0, 0], 1);
-    const marker = L.marker([0, 0]).addTo(mymap);
-
-    const attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-
-    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const tiles = L.tileLayer(tileUrl, { attribution });
-    tiles.addTo(mymap);
-    //L.map.removeLayer(marker);
-    //Add map marker at specified location
-    L.marker([latitude, longitude]).addTo(mymap);
-    mymap.setView([latitude, longitude], 13);
-    marker.setLatLng([latitude, longitude]);
-    } catch(error) {
-        console.log(error);
-    }
-    
-};
-
 
 // Function to display weather on the page
-const showWeather = (data) => {
+function showWeather(data) {
+
     const { lat: latitude, lon: longitude } = data.coord;
     const { country } = data.sys;
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
-
-    document.querySelector('.city').innerText = "Weather in " + name;
-
+    
+    weatherContainer.classList.remove("hide");
+    mapContainer.classList.remove("hide");
+    
+    document.querySelector('.city').innerText = "Weather in " + name + ", " + countryName;
     document.querySelector('.icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
     document.querySelector('.description').innerText = description;
-
     document.querySelector('.temp').innerHTML = `Temperature:  + ${temp}<span> &#8451;</span>`;
-
     document.querySelector('.feels').innerHTML = `Feels like: ${feels_like}<span> &#8451;</span>`;
-
     document.querySelector('.humidity').innerHTML = `Humidity: ${humidity}<span>&#37;</span>`;
-
     document.querySelector('.speed').textContent = `Wind Speed: ${speed} km/h`;
-
     document.querySelector('.country').innerText = `Country: ${country}`;
-
     document.querySelector('.coord').textContent = `Coordinates: Lat :${latitude} °, Lon: ${longitude} °`;
 
-
     // Function for changing background image regarding description value
-    const setBackground = () => {
-        let containerBg = document.querySelector("body");
-        // console.log(description);
-        switch (description) {
-            case "light rain":
-                containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
-                break;
-            case "snow":
-                containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-                break;
-            case "light snow":
-                containerBg.style.backgroundImage = "url('assets/images/light-snow.jpg')";
-                break;
-            case "light intensity drizzle":
-                containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-                break;
-            case "broken clouds":
-                containerBg.style.backgroundImage = "url('assets/images/broken-clouds.jpg')";
-                break;
-            case "scattered clouds":
-                containerBg.style.backgroundImage = "url('assets/images/scattered-clouds.jpg')";
-                break;
-            default:
-                containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')";
-        }
-
-    };
-    //Calling setBackground function
-    setBackground();
-
+    setBackground(description);
+    
     // Displaying the map
-    // const mymap = L.map('map').setView([0, 0], 1);
-    // const marker = L.marker([0, 0]).addTo(mymap);
-
-    // const attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-
-    // const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    // const tiles = L.tileLayer(tileUrl, { attribution });
-    // tiles.addTo(mymap);
-    // //Add map marker at specified location
-    // L.marker([latitude, longitude]).addTo(mymap);
-    // mymap.setView([latitude, longitude], 13);
-    // marker.setLatLng([latitude, longitude]);
-};
+    if (!mapGenerated) {
+        generateMap();
+    }
+    
+    // Add map marker at specified location
+    addMarker(mymap, results, latitude, longitude);
+}
 
 
+function generateMap() {
+    mapGenerated = true;
+    mymap = L.map('map').setView([0, 0], 1);
+    const attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, { attribution });
+    tiles.addTo(mymap);
+    results = L.layerGroup().addTo(mymap);
+}
+    // Add marker on map
+function addMarker(mymap, results, latitude, longitude) {
+    // remove older markers first
+    results.clearLayers();
 
+    // Add map marker at specified location
+    marker = L.marker([latitude, longitude]);
+    results.addLayer(marker);
+    L.marker([latitude, longitude]).addTo(mymap);
+    mymap.setView([latitude, longitude], 13);
+    marker.setLatLng([latitude, longitude]);
+}
+
+
+
+function setBackground(description) {
+    let containerBg = document.querySelector("body");
+    if (description.includes("cloud")) {
+        containerBg.style.backgroundImage = "url('assets/images/scattered-clouds.jpg')";
+    } else if (description.includes("snow")) {
+        containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
+    } else if (description.includes("rain") || description.includes("mist")) {
+        containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
+    } else {
+        containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')";
+    }
+}

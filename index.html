@@ -23,15 +23,23 @@
         <!-- Div where is displayed weather info -->
         <div class="input">
             <!-- Input element -->
+            <select name="country" id="country" required>
+                <option value="" disabled selected>Select a Country</option>
+                <option value="IE">Ireland</option>
+                <option value="GB">UK</option>
+                <option value="DE">Germany</option>
+                <option value="US">USA</option>
+                <option value="ID">Indonesia</option>
+            </select>
             <input type="text" class="search-bar" name="search" placeholder="Search weather">
             <p class="error"></p>
             <!-- Search button -->
-            <button>Search</button>
+            <button id="search-btn">Search</button>
         </div>
         
         
         
-        <div class="container">
+        <div id="container">
             
             
             <!-- Div with weather info from the API -->

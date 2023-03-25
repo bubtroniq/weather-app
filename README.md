@@ -66,8 +66,9 @@ After inserting a location in the text input and click search, two more divs wil
 - Lots of issues with retrievieng coordinates from data object
 - After first search map is not updating with new coordinates
 - Alot of errors to be managed when fetching API data.
-- Background picture that is changing regarding the description message needs fixing on mobile view.
+- Background picture that is changing regarding description message needs fixing on mobile view.
 - On second+ search map is not updating the new location
+- Markers from previous searches will remain pinned 
 
 
 
