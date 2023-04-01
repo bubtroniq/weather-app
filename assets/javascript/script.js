@@ -15,7 +15,7 @@ mapContainer.classList.add("hide");
 //Fetching Data from weatherAPI
 
 function fetchForecast(city) {
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + apiKey)
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + apiKey)
         .then((response) => {
             //Conditionals cheking for good/bad response
             if (!response.ok) {
