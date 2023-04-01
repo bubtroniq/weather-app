@@ -7,10 +7,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url('../images/background.jpg');
+    /* background-image: url('../images/background.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background-color: #3b93db;
+    font-size: .7em;
 }
 
 
@@ -21,13 +23,15 @@ h1 {
     text-shadow: 3px 3px #00000057;
     margin: 1em auto;
     text-align: center;
+    padding: 1em;
 }
 
-.container {
+#container {
     max-width: 100%;
     max-height: 100%;
     color: white;
-    background-color: #110f0f3d;
+    padding: .5em;
+    margin: 1em auto;
 }
 
 
@@ -40,8 +44,21 @@ input {
     opacity: .7;
 }
 
+select {
+    width: 30%;
+    height: 2em;
+    font-size: 1.3em;
+    text-align: center;
+    border-radius: 8px;
+    opacity: .7;
+}
+
+#cntry {
+    color: yellow;
+}
+
 button {
-    padding: .5em 2em;
+    padding: .5em 1em;
     font-size: 2em;
     border-radius: 8px;
     display: block;
@@ -63,23 +80,25 @@ button {
 }
 
 .stil {
-    font-size: 2em;
-    font-weight: 700;
+    font-size: 1.2em;
+    font-weight: 600;
     color: #fff;
     text-align: center;
 }
 
-.container img {
+.icon {
     display: block;
     margin: 0 auto;
-    height: 150px;
+    /* height: 100px;
+    width: 1000px; */
 }
 
 
 #map {
-    height: 80vh;
-    width: 80%;
+    height: 400px;
+    width: 60%;
     margin: 0 auto 2em;
+    border-radius: 8px;
 }
 
 .error {
@@ -91,4 +110,74 @@ button {
 
 .hide {
     display: none;
+}
+
+#forecast {
+    display: none;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#forecast-btn {
+    margin: 0 auto;
+}
+
+
+.table td {
+    align-self: center;
+    font-size: .8em;
+}
+
+.table {
+    margin: 0 auto;
+}
+
+table td img {
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Media queries */
+
+@media screen and (min-width: 980px) {
+    .weather-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    #map {
+        height: 60%;
+        width: 60%;
+    }
+
+    table {
+        max-width: 90%;
+        margin: 0 auto;
+        
+    }
+
+    .table td {
+        align-self: center;
+        font-size: 1.5em;
+    }
+
+    #forecast {
+        margin: 0 auto;
+    }
+
+    table td img {
+        margin: 0;
+        padding: 0;
+        height: 100px;
+        width: 100px;
+    }
+
+    #container {
+        font-size: 1.4em;
+    }
 }
