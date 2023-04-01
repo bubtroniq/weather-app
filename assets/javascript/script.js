@@ -3,17 +3,41 @@
 let mapGenerated = false;
 let mymap, marker, results, countryCode, countryName;
 
-const weatherContainer = document.getElementById("container");
-const mapContainer = document.getElementById("map");
-
+const weatherContainer = document.querySelector("#container");
+const mapContainer = document.querySelector("#map");
+const forecast = document.querySelector('#forecast');
+const apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
+const forecastBtn = document.querySelector('#forecast-btn');
+const cntry = document.getElementById('cntry');
+let table = document.querySelector('#table');
+weatherContainer.classList.add("hide");
+mapContainer.classList.add("hide");
 //Fetching Data from weatherAPI
+
+function fetchForecast(city) {
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + apiKey)
+        .then((response) => {
+            //Conditionals cheking for good/bad response
+            if (!response.ok) {
+                return response.text().then(text => document.querySelector('.error').innerText = "Can't find your city!");
+            } else {
+                return response.json();
+            }
+        })
+        .then((data2) => showForecast(data2))
+        //catch errors from bad user input
+        .catch((error) => {
+            console.log('ERROR is: ', error);
+        });
+}
+
+
 function fetchWeather(city) {
-    const apiKey = '6ed13b8704e280c7b07c7f3594d5ffc1';
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=" + apiKey)
         .then((response) => {
             //Conditionals cheking for good/bad response
             if (!response.ok) {
-                return response.text().then(text => document.querySelector('.error').innerText = 'Cant find your city!');
+                return response.text().then(text => document.querySelector('.error').innerText = "Can't find your city!");
             } else {
                 return response.json();
             }
@@ -23,7 +47,7 @@ function fetchWeather(city) {
         .catch((error) => {
             console.log('ERROR is: ', error);
         });
-};
+}
 
 // Fetch weather callback function
 function search() {
@@ -36,6 +60,12 @@ function search() {
     countryName = countrySelect.options[countrySelect.selectedIndex].text;
     city = `${city}, ${countrySelect}`;
     fetchWeather(city);
+    fetchForecast(city);
+    if(cntry === "") {
+        cntry.innerText = "Enter country for an accurate search";
+    } else {
+        cntry.innerText = '';
+    }
 
     //catch errors from bad user input
     try {
@@ -43,19 +73,17 @@ function search() {
     } catch (error) {
         console.log('THIS ERROR is: ', error);
     }
-};
+}
 
 
 
 
 // Event listener to display weather and location on map clicking search button
-document.querySelector('#search-btn').addEventListener('click', () => {
+document.querySelector('#searchbtn').addEventListener('click', () => {
     let city = document.querySelector('input').value;
     //Conditionals for user feedback 
     if (city === '') {
         document.querySelector('.error').innerText = 'Enter a location';
-        weatherContainer.classList.add("hide");
-        mapContainer.classList.add("hide");
     } else if (city !== '') {
         document.querySelector('.error').innerText = '';
         search();
@@ -81,10 +109,10 @@ function showWeather(data) {
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
-    
+
     weatherContainer.classList.remove("hide");
     mapContainer.classList.remove("hide");
-    
+
     document.querySelector('.city').innerText = "Weather in " + name + ", " + countryName;
     document.querySelector('.icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     document.querySelector('.description').innerText = description;
@@ -96,13 +124,13 @@ function showWeather(data) {
     document.querySelector('.coord').textContent = `Coordinates: Lat :${latitude} °, Lon: ${longitude} °`;
 
     // Function for changing background image regarding description value
-    setBackground(description);
-    
+    //setBackground(description);
+
     // Displaying the map
     if (!mapGenerated) {
         generateMap();
     }
-    
+
     // Add map marker at specified location
     addMarker(mymap, results, latitude, longitude);
 }
@@ -117,7 +145,7 @@ function generateMap() {
     tiles.addTo(mymap);
     results = L.layerGroup().addTo(mymap);
 }
-    // Add marker on map
+// Add marker on map
 function addMarker(mymap, results, latitude, longitude) {
     // remove older markers first
     results.clearLayers();
@@ -129,10 +157,60 @@ function addMarker(mymap, results, latitude, longitude) {
     mymap.setView([latitude, longitude], 13);
     marker.setLatLng([latitude, longitude]);
 }
+//function for displaying 5day/3h forecast
+function showForecast(data2) {
+    let htmlTable = `<thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Min Temp</th>
+      <th scope="col">Max Temp</th>
+      <th scope="col">Details</th>
+      <th scope="col">Description</th>
+      <th scope="col">Icon</th>
+    </tr>
+  </thead>
+  <tbody>`;
+
+    data2.list.forEach(el => {
+        htmlTable += `
+        <tr>
+            <td>${displayDate(el.dt_txt)}</td>
+            <td>${el.main.temp_min} &#8451</td>
+            <td>${el.main.temp_max} &#8451</td>
+            <td>${el.weather[0].main}</td>
+            <td>${el.weather[0].description}</td>
+            <td><img src = 'https://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png'></td>
+         </tr>`;
+    });
+    table.innerHTML = htmlTable;
+    forecast.style.display = 'block';
+}
+
+forecastBtn.addEventListener('click', ()=> {
+    table.classList.toggle('hide');
+});
+//function for Displaying date and hour
+function displayDate(date) {
+    let oldDate = new Date(date);
+
+    const day = oldDate.getDate() < 10 ? '0' + oldDate.getDate().toString() : oldDate.getDate();
+    let month = oldDate.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+    const year = oldDate.getFullYear().toString();
+    const hour = oldDate.getHours() < 10 ? "0" + oldDate.getHours().toString(): oldDate.getHours();
+
+    const newDate = `${day}/${month}/${year} - ${hour}:00`;
+    return newDate;
+
+}
+
+displayDate("2023-03-26 06:00:00");
 
 
 
-function setBackground(description) {
+
+
+/*function setBackground(description) {
     let containerBg = document.querySelector("body");
     if (description.includes("cloud")) {
         containerBg.style.backgroundImage = "url('assets/images/scattered-clouds.jpg')";
@@ -143,4 +221,4 @@ function setBackground(description) {
     } else {
         containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')";
     }
-}
+}*/
