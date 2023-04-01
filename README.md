@@ -14,11 +14,11 @@ A simple, yet modern design, wich contains an input element and a search button 
 After inserting a location in the text input and click search, two more divs will be added. First div contains weather data, second div contains a map with the location pinned.
 
 ### Colour Scheme
+Simple and with a good contrast color scheme.
 
-
-- `#yellow` used for heading and user feedback text.
+- `#FFFF00` used for heading and user feedback text.
 - `#fff` used for weather info text.
-- `#000` used for forecast text.
+- `#000` default font color, used for forecast text.
 - `#3b93db` used as background for body and buttons.
 
 I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate my colour palette.
@@ -31,7 +31,7 @@ I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate 
 ## User Stories
 
 ### New Site Users
-- As a new site user, I would like to be able to find detailed information about weather in a specific location.
+- As a new site user, I would like to be able to find information about weather in a specific location.
 
 ### Returning Site Users
 - As a returning site user, I would like to find weather information easy and fast.
@@ -52,8 +52,8 @@ First feature contains a search box, a country select element and a search butto
 ![screenshot](documentation/feature-1.jpg)
 
 - **Feature #2**
-![screenshot](documentation/feature-2.jpg)
 Feature two consists in displaying weather information and location on the map, elements beeing generated based on search action.
+![screenshot](documentation/feature-2.jpg)
 
 - **Feature #3**
 Feature three cosnsists of a button that when is pressed will display a 5day/3h interval weather forecast.
@@ -61,9 +61,8 @@ Based on data received from API, a table is generated with javascript and detail
 ![screenshot](documentation/feature-3.jpg)
 
 - **Feature #4**
-![screenshot](documentation/feature-4.jpg)
 Feature four consits in a footer with font awesome icons and links to external pages/social media.
-
+![screenshot](documentation/feature-4.jpg)
 
 ## Tools & Technologies Used
 Technologies used to build this website are:
@@ -85,20 +84,6 @@ The site was deployed to GitHub Pages. The steps to deploy are as follows:
 - The page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
 The live link can be found [here](weather-app-bubtroniq.vercel.app)
-
-## Bugs
-
-- Alot of trial and error fetching both API's and displaying data on the go modifying DOM structure.
-- Had to setTimeout() on the changeBackground function to fix background picture in one click, otherwise 2 click requierd in order to set the proper background definded in switch statement.
-- Lots of issues with retrievieng coordinates from data object
-- After first search map is not updating with new coordinates
-- Alot of errors to be managed when fetching API data.
-- Background picture that is changing regarding description message needs fixing on mobile view.
-- On second+ search map is not updating the new location
-- Markers from previous searches will remain pinned 
-
-
-
 ### Local Deployment
 This project can be cloned or forked in order to make a local copy on your own system.
 
@@ -153,14 +138,22 @@ Ideally, you should provide an actual link to every resource used, not just a ge
 
 ### Media
 
-Background pictures used in project.
+Icons and API used in project.
 
 | Source | Location | Type | Notes |
 | --- | --- | --- | --- |
-| [Pixabay](https://pixabay.com) | main page| image | group of photos for gallery |
+| [Font Awesome](https://fontawesome.com/) | main page| icons | calendar and clock icons in forecast table |
+| [OpenWeatherMap Icons](https://openweathermap.org/weather-conditions#How-to-get-icon-URL) | main page| icons | icon in current weather info and icons in forecast interval table data |
+| [OpenWeatherMap OneCall API](https://openweathermap.org/api/one-call-3) | main page| icons | icon in current weather info and icons in forecast interval table data |
+| [OpenWeatherMap OneCall API](https://openweathermap.org/api/one-call-3) | main page| weather info | current weather info |
+| [OpenWeatherMap 5 day 3 hour forecast data API](https://openweathermap.org/forecast5) | main page| weather info | 5day/3h interval forecast table data |
+| [LeafletJS Map](https://leafletjs.com/) | main page| location info | displaying location with a marker on leafletJS map |
 
 
 
 ### Acknowledgements
 - I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN/ci-ifd-lead) for his patience, support and suggestions throughout the development of this project.
 - I would like to thank my coleagues from Newcastle College, for ideas and suggestions towards developing this project.
+
+
+Go to the to the [TESTING.md](TESTING.md) file.
