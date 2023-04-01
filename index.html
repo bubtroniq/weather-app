@@ -2,65 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" type="text/css">
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" type="text/css">
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-    <title>Weather App</title>
+  <title>Weather App</title>
 </head>
 
 <body>
-    <!-- Main section -->
-    <header>
-        <h1>Search Weather in more than 200.000 cities across the world</h1>
-    </header>
+  <!-- Main section -->
+  <header>
+    <h1>Search Weather in more than 200.000 cities across the world</h1>
+  </header>
 
-    <section>
-        <!-- Div where is displayed weather info -->
-        <div class="input">
-            <!-- Input element -->
-            <select name="country" id="country" required>
-                <option value="" disabled selected>Select a Country</option>
-                <option value="IE">Ireland</option>
-                <option value="GB">UK</option>
-                <option value="DE">Germany</option>
-                <option value="US">USA</option>
-                <option value="ID">Indonesia</option>
-            </select>
-            <input type="text" class="search-bar" name="search" placeholder="Search weather">
-            <p class="error"></p>
-            <!-- Search button -->
-            <button id="search-btn">Search</button>
+  <section>
+    <!-- Div where is displayed weather info -->
+    <div class="input">
+      <!-- Input element -->
+      
+      <input type="text" class="search-bar" name="search" placeholder="Search weather">
+      <select name="country" id="country" required>
+        <option value="" disabled selected>Select a Country</option>
+        <option value="IE">Ireland</option>
+        <option value="GB">UK</option>
+        <option value="DE">Germany</option>
+        <option value="US">USA</option>
+        <option value="ID">Indonesia</option>
+      </select>
+      <p id="cntry">Enter country for an accurate search</p>
+      <p class="error"></p>
+      <!-- Search button -->
+      <button id="searchbtn">Search</button>
+    </div>
+
+
+    <div class="weather-info">
+      <div id="container">
+        <!-- Div with weather info from the API -->
+        <div>
+          <p class="city stil"></p>
+          <img src="" alt="" class="icon"></p>
+          <p class="description stil"></p>
+          <p class="temp stil"></p>
+          <p class="feels stil"></p>
+          <p class="humidity stil"></p>
+          <p class="speed stil"></p>
+          <p class="country stil"></p>
+          <p class="coord stil"></p>
         </div>
-        
-        
-        
-        <div id="container">
-            
-            
-            <!-- Div with weather info from the API -->
-            <div>
-                <p class="city stil"></p>
-                <img src="" alt="" class="icon"></p>
-                <p class="description stil"></p>
-                <p class="temp stil"></p>
-                <p class="feels stil"></p>
-                <p class="humidity stil"></p>
-                <p class="speed stil"></p>
-                <p class="country stil"></p>
-                <p class="coord stil"></p>
-            </div>
+        <button id="forecast-btn">5 Day/3h interval forecast</button>
+      </div>
+      <!-- Map element -->
+      <div id="map"></div>
+      
+    </div>
 
-            <!-- Map element -->
+    
+<!-- 5 Day/3h interval forecast div -->
+    <div id="forecast">
+      <h2></h2>
 
-            
-        </div>
-        <div id="map"></div>
-    </section>
+      <table class="table hide" id="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+
+  </section>
 
 
 
@@ -68,9 +109,12 @@
 
 
 
-    <!-- Script links for leafletJS and custom JavaScript code -->
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-    <script src="assets/javascript/script.js"></script>
+  <!-- Script links for leafletJS and custom JavaScript code -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script> -->
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script src="assets/javascript/script.js"></script>
 
 </body>
 
