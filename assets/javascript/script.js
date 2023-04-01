@@ -13,7 +13,7 @@ let table = document.querySelector('#table');
 weatherContainer.classList.add("hide");
 mapContainer.classList.add("hide");
 //Fetching Data from weatherAPI
-
+// Fetch 5day/3h interval forecast
 function fetchForecast(city) {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + apiKey)
         .then((response) => {
@@ -31,7 +31,7 @@ function fetchForecast(city) {
         });
 }
 
-
+// Fetch weather function
 function fetchWeather(city) {
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=" + apiKey)
         .then((response) => {
@@ -58,7 +58,7 @@ function search() {
     let countrySelect = document.getElementById("country");
     countryCode = countrySelect.value;
     countryName = countrySelect.options[countrySelect.selectedIndex].text;
-    city = `${city}, ${countrySelect}`;
+    city = `${city}, ${countryName}`;
     fetchWeather(city);
     fetchForecast(city);
     if(cntry === "") {
@@ -102,17 +102,17 @@ input.addEventListener('keypress', (event) => {
 
 // Function to display weather on the page
 function showWeather(data) {
-
+// Destructuring objects
     const { lat: latitude, lon: longitude } = data.coord;
     const { country } = data.sys;
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
-
+// Hide weather and map container before search
     weatherContainer.classList.remove("hide");
     mapContainer.classList.remove("hide");
-
+// Displaying weather data
     document.querySelector('.city').innerText = "Weather in " + name + ", " + countryName;
     document.querySelector('.icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     document.querySelector('.description').innerText = description;
@@ -123,8 +123,7 @@ function showWeather(data) {
     document.querySelector('.country').innerText = `Country: ${country}`;
     document.querySelector('.coord').textContent = `Coordinates: Lat :${latitude} °, Lon: ${longitude} °`;
 
-    // Function for changing background image regarding description value
-    //setBackground(description);
+    
 
     // Displaying the map
     if (!mapGenerated) {
@@ -154,23 +153,24 @@ function addMarker(mymap, results, latitude, longitude) {
     marker = L.marker([latitude, longitude]);
     results.addLayer(marker);
     L.marker([latitude, longitude]).addTo(mymap);
-    mymap.setView([latitude, longitude], 13);
+    mymap.setView([latitude, longitude], 11);
     marker.setLatLng([latitude, longitude]);
 }
 //function for displaying 5day/3h forecast
 function showForecast(data2) {
+    // Table template
     let htmlTable = `<thead>
     <tr>
-      <th scope="col">Date</th>
+      <th scope="col">Date & Time</th>
       <th scope="col">Min Temp</th>
       <th scope="col">Max Temp</th>
-      <th scope="col">Details</th>
+      <th scope="col">Forecast</th>
       <th scope="col">Description</th>
       <th scope="col">Icon</th>
     </tr>
   </thead>
   <tbody>`;
-
+// Generating table row for each weather data interval
     data2.list.forEach(el => {
         htmlTable += `
         <tr>
@@ -185,7 +185,7 @@ function showForecast(data2) {
     table.innerHTML = htmlTable;
     forecast.style.display = 'block';
 }
-
+// Event listener for toggling hide class
 forecastBtn.addEventListener('click', ()=> {
     table.classList.toggle('hide');
 });
@@ -199,7 +199,7 @@ function displayDate(date) {
     const year = oldDate.getFullYear().toString();
     const hour = oldDate.getHours() < 10 ? "0" + oldDate.getHours().toString(): oldDate.getHours();
 
-    const newDate = `${day}/${month}/${year} - ${hour}:00`;
+    const newDate = `<i class="fa-regular fa-calendar"></i>${day}/${month}/${year} -<i class="fa-regular fa-clock"></i>${hour}:00`;
     return newDate;
 
 }
@@ -209,7 +209,8 @@ displayDate("2023-03-26 06:00:00");
 
 
 
-
+// Function for changing background image regarding description value
+//setBackground(description);
 /*function setBackground(description) {
     let containerBg = document.querySelector("body");
     if (description.includes("cloud")) {
