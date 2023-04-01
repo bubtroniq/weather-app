@@ -4,6 +4,7 @@ Weathe App is a simple and responsive  website where the user can find weather i
 
 Weather App is intended for any kind of user who wants to find weather and location information for a specific location using the search input and the search button at the top.
 Weather App it is very easy to use with a simple and intuitive design.
+![screenshot](documentation/mockup.jpg)
 
 
 
@@ -13,6 +14,15 @@ A simple, yet modern design, wich contains an input element and a search button 
 After inserting a location in the text input and click search, two more divs will be added. First div contains weather data, second div contains a map with the location pinned.
 
 ### Colour Scheme
+
+
+- `#yellow` used for heading and user feedback text.
+- `#fff` used for weather info text.
+- `#000` used for forecast text.
+- `#3b93db` used as background for body and buttons.
+
+I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate my colour palette.
+![screenshot](documentation/color-pallete.jpg)
 
 
 ### Typography
@@ -37,8 +47,22 @@ After inserting a location in the text input and click search, two more divs wil
 ## Features
 ### Existing Features
 
-- **Feature #1**
+- **Feature #1** 
+First feature contains a search box, a country select element and a search button allowing users to search weather information based on city and country name.
+![screenshot](documentation/feature-1.jpg)
 
+- **Feature #2**
+![screenshot](documentation/feature-2.jpg)
+Feature two consists in displaying weather information and location on the map, elements beeing generated based on search action.
+
+- **Feature #3**
+Feature three cosnsists of a button that when is pressed will display a 5day/3h interval weather forecast.
+Based on data received from API, a table is generated with javascript and detailed weather info is displayed.
+![screenshot](documentation/feature-3.jpg)
+
+- **Feature #4**
+![screenshot](documentation/feature-4.jpg)
+Feature four consits in a footer with font awesome icons and links to external pages/social media.
 
 
 ## Tools & Technologies Used
