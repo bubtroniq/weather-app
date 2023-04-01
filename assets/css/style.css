@@ -37,7 +37,7 @@ h1 {
 
 /* Style for search box */
 input {
-    width: 60%;
+    width: 90%;
     height: 2em;
     font-size: 1.3em;
     text-align: center;
@@ -47,7 +47,7 @@ input {
 
 /* Style for select element */
 select {
-    max-width: 40%;
+    width: 60%;
     height: 2em;
     font-size: 1.3em;
     text-align: center;
@@ -214,5 +214,23 @@ table td img {
 
     .social-icons {
         margin: 10em auto 1em;
+    }
+
+    input {
+        width: 40%;
+        height: 2em;
+        font-size: 1.3em;
+        text-align: center;
+        border-radius: 8px;
+        opacity: .7;
+    }
+
+    select {
+        width: 25%;
+        height: 2em;
+        font-size: 1.3em;
+        text-align: center;
+        border-radius: 8px;
+        opacity: .7;
     }
 }
