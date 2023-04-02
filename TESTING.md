@@ -7,10 +7,17 @@ Return back to the [README.md](README.md) file.
 
 
 ### HTML
-
+- No errors or warnings were found when passing through the [W3C Markup Validator](https://validator.w3.org/).
+![screenshot](documentation/html-validation.jpg)
 
 
 ### CSS
+- No errors or warnings were found when passing through the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+![screenshot](documentation/css-validation.jpg)
+
+### JS
+- One undefined variable L, it is from leafletJS map.
+![screenshot](documentation/jsint-validation.jpg)
 
 
 ## Browser Compatibility
@@ -20,6 +27,10 @@ Return back to the [README.md](README.md) file.
 
 
 ## Lighthouse Audit
+### Desktop Lighthouse audit
+![screenshot](documentation/lighthouse-desktop.jpg)
+### Mobile Lighthouse audit 
+![screenshot](documentation/lighthouse-mobile.jpg)
 
 
 ## User Story Testing
