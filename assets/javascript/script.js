@@ -1,5 +1,8 @@
 /* jshint esversion: 11 */
 
+
+//Declaring variables
+
 let mapGenerated = false;
 let mymap, marker, results, countryCode, countryName;
 
@@ -12,7 +15,10 @@ const cntry = document.getElementById('cntry');
 let table = document.querySelector('#table');
 weatherContainer.classList.add("hide");
 mapContainer.classList.add("hide");
+
+
 //Fetching Data from weatherAPI
+
 // Fetch 5day/3h interval forecast
 function fetchForecast(city) {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + apiKey)
@@ -49,7 +55,7 @@ function fetchWeather(city) {
         });
 }
 
-// Fetch weather callback function
+// Fetch weather callback function(search())
 function search() {
     let city = document.querySelector('input').value;
     if (city.includes(",")) {
@@ -61,7 +67,7 @@ function search() {
     city = `${city}, ${countryName}`;
     fetchWeather(city);
     fetchForecast(city);
-    if(cntry === "") {
+    if (cntry === "") {
         cntry.innerText = "Enter country for an accurate search";
     } else {
         cntry.innerText = '';
@@ -74,9 +80,6 @@ function search() {
         console.log('THIS ERROR is: ', error);
     }
 }
-
-
-
 
 // Event listener to display weather and location on map clicking search button
 document.querySelector('#searchbtn').addEventListener('click', () => {
@@ -100,19 +103,20 @@ input.addEventListener('keypress', (event) => {
     }
 });
 
+
 // Function to display weather on the page
 function showWeather(data) {
-// Destructuring objects
+    // Destructuring objects
     const { lat: latitude, lon: longitude } = data.coord;
     const { country } = data.sys;
     const { name } = data;
     const { icon, description } = data.weather[0];
     const { temp, humidity, feels_like } = data.main;
     const { speed } = data.wind;
-// Hide weather and map container before search
+    // Hide weather and map container before search
     weatherContainer.classList.remove("hide");
     mapContainer.classList.remove("hide");
-// Displaying weather data
+    // Displaying weather data
     document.querySelector('.city').innerText = "Weather in " + name + ", " + countryName;
     document.querySelector('.icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     document.querySelector('.description').innerText = description;
@@ -123,7 +127,7 @@ function showWeather(data) {
     document.querySelector('.country').innerText = `Country: ${country}`;
     document.querySelector('.coord').textContent = `Coordinates: Lat :${latitude} °, Lon: ${longitude} °`;
 
-    
+
 
     // Displaying the map
     if (!mapGenerated) {
@@ -134,7 +138,7 @@ function showWeather(data) {
     addMarker(mymap, results, latitude, longitude);
 }
 
-
+//Function to generate map
 function generateMap() {
     mapGenerated = true;
     mymap = L.map('map').setView([0, 0], 1);
@@ -170,7 +174,7 @@ function showForecast(data2) {
     </tr>
   </thead>
   <tbody>`;
-// Generating table row for each weather data interval
+    // Generating table row for each weather data interval
     data2.list.forEach(el => {
         htmlTable += `
         <tr>
@@ -186,10 +190,10 @@ function showForecast(data2) {
     forecast.style.display = 'block';
 }
 // Event listener for toggling hide class
-forecastBtn.addEventListener('click', ()=> {
+forecastBtn.addEventListener('click', () => {
     table.classList.toggle('hide');
 });
-//function for Displaying date and hour
+//function for displaying date and hour
 function displayDate(date) {
     let oldDate = new Date(date);
 
@@ -197,29 +201,11 @@ function displayDate(date) {
     let month = oldDate.getMonth() + 1;
     month = month < 10 ? '0' + month.toString() : month.toString();
     const year = oldDate.getFullYear().toString();
-    const hour = oldDate.getHours() < 10 ? "0" + oldDate.getHours().toString(): oldDate.getHours();
+    const hour = oldDate.getHours() < 10 ? "0" + oldDate.getHours().toString() : oldDate.getHours();
 
     const newDate = `<i class="fa-regular fa-calendar"></i>${day}/${month}/${year} -<i class="fa-regular fa-clock"></i>${hour}:00`;
     return newDate;
 
 }
-
+//Calling displayDate function
 displayDate("2023-03-26 06:00:00");
-
-
-
-
-// Function for changing background image regarding description value
-//setBackground(description);
-/*function setBackground(description) {
-    let containerBg = document.querySelector("body");
-    if (description.includes("cloud")) {
-        containerBg.style.backgroundImage = "url('assets/images/scattered-clouds.jpg')";
-    } else if (description.includes("snow")) {
-        containerBg.style.backgroundImage = "url('assets/images/snow.jpg')";
-    } else if (description.includes("rain") || description.includes("mist")) {
-        containerBg.style.backgroundImage = "url('assets/images/light-rain.jpg')";
-    } else {
-        containerBg.style.backgroundImage = "url('assets/images/sunny.jpg')";
-    }
-}*/
