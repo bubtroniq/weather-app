@@ -31,7 +31,9 @@ I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate 
 ## User Stories
 
 ### New Site Users
+- As a new site user, I want to easily understand the main purpose of the site so that I can quickly decide whether I want to explore it more.
 - As a new site user, I would like to be able to find information about weather in a specific location.
+- As a new site user, I want to check their social media so that I can determine whether they are trustworthy.
 
 ### Returning Site Users
 - As a returning site user, I would like to find weather information easy and fast.
