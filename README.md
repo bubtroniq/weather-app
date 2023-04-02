@@ -41,8 +41,11 @@ I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate 
 
 ## Wireframes
 ### Mobile Wireframes
+![screenshot](documentation/mobile-wireframe.png)
 ### Tablet Wireframes
+![screenshot](documentation/tablet-wireframe.png)
 ### Desktop Wireframes
+![screenshot](documentation/desktop-wireframe.png)
 
 ## Features
 ### Existing Features
