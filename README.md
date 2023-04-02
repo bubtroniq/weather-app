@@ -126,11 +126,6 @@ There is no difference between local version and the live deployed site.
 
 
 ## Credits
-Use this space to provide attribution links to any borrowed code snippets, elements, or resources.
-A few examples have been provided below to give you some ideas.
-
-Ideally, you should provide an actual link to every resource used, not just a generic link to the main site!
-
 | Source | Location | Notes |
 | --- | --- | --- |
 | [Tim Nelson](https://traveltimn.github.io/readme-builder) | README and TESTING | tool to help generate the Markdown files |
