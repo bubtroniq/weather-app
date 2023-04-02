@@ -77,6 +77,7 @@ Technologies used to build this website are:
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
 - [Tim Nelson](https://traveltimn.github.io/readme-builder) used to help generate the Markdown files.
+- [Balsamiq](https://balsamiq.com/wireframes/) used to create wireframes for this website
 - [Vercel](https://vercel.com/) used for hosting the deployed site.
 
 
