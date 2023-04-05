@@ -10,13 +10,13 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #3b93db;
+    background-color: #1A68C7;
     font-size: .7em;
 }
 
 /* header style */
 h1 {
-    color: yellow;
+    color: #F9ED9F;
     font-size: 2em;
     font-weight: 700;
     text-shadow: 3px 3px #00000057;
@@ -58,7 +58,7 @@ select {
 
 /* Advise message */
 #cntry {
-    color: yellow;
+    color: #F9ED9F;
 }
 
 
@@ -66,15 +66,20 @@ select {
 button {
     padding: .5em 1em;
     font-size: 2em;
+    font-weight: 700;
     border-radius: 8px;
     display: block;
     align-items: center;
-    color: #fff;
-    background-color: #3b93db;
+    color: #000;
+    background-color: #fff;
     box-shadow: 3px 3px #00000057;
-    text-shadow: 3px 3px #00000057;
+    text-shadow: 1px 1px #00000057;
     opacity: 85%;
     cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 
@@ -116,7 +121,7 @@ button {
 /* Error message style */
 .error {
     text-align: center;
-    color: yellow;
+    color: #F9ED9F;
     font-size: 2em;
 }
 
@@ -143,10 +148,12 @@ button {
 .table td {
     align-self: center;
     font-size: .8em;
+    
 }
 
 .table {
     margin: 0 auto;
+    color: #F9ED9F;
 }
 
 table td img {
@@ -166,7 +173,7 @@ table td img {
     cursor: pointer;
 }
 .social-icons a {
-    color: yellow;
+    color: #F9ED9F;
 }
 
 .social-icons div:hover {
