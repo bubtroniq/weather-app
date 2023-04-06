@@ -17,9 +17,9 @@ After inserting a location in the text input and click search, two more divs wil
 Simple and with a good contrast color scheme.
 
 - `#FFFF00` used for heading and user feedback text.
-- `#fff` used for weather info text.
-- `#000` default font color, used for forecast text.
-- `#3b93db` used as background for body and buttons.
+- `#fff` used for weather info text and button background.
+- `#000` default font color,used for input text.
+- `#3b93db` used as background for body.
 
 I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate my colour palette.
 ![screenshot](documentation/color-pallete.jpg)
