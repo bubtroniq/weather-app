@@ -1,32 +1,32 @@
 # Weather App
 
-Weathe App is a simple and responsive  website where the user can find weather information like temperature, wind speed, humidity, location displayed on a map for better orientation, all this in real time.
+Weather App is a simple and responsive  website where the user can find weather information like temperature, wind speed, humidity, location displayed on a map for better orientation, all this in real time.
 
-Weather App is intended for any kind of user who wants to find weather and location information for a specific location using the search input and the search button at the top.
+Weather App is intended for any kind of user who wants to find weather and location information for a specific location using the text input, selecting the country for an accurate search and the search button at the top.
 Weather App it is very easy to use with a simple and intuitive design.
+[Live Page HERE](https://weather-app-bubtroniq.vercel.app/)
 ![screenshot](documentation/mockup.jpg)
-
-
 
 ## UX
 
-A simple, yet modern design, wich contains an input element and a search button in the first phase.
-After inserting a location in the text input and click search, two more divs will be added. First div contains weather data, second div contains a map with the location pinned.
+A simple, yet modern design, wich contains an h1 element as title, an input element, a country select element and a search button at the top of the page and a footer at the bottom in the first phase.
+After inserting a location in the text input, choosing country and click search, two more divs will be added. First div contains weather data, second div contains a map with the location pinned.
+Under the weather data information is a 5day/3h interval forecast button, when clicked, under the map will generate an html table with weather forecast data for every 3h for 5 days.
 
 ### Colour Scheme
 Simple and with a good contrast color scheme.
 
-- `#FFFF00` used for heading and user feedback text.
-- `#fff` used for weather info text and button background.
-- `#000` default font color,used for input text.
+- `#FFFF00` used for heading and forecast text and also for alert mesages.
+- `#fff` used for weather info text and buttons background.
+- `#000` default font color, for user input text and country select.
 - `#3b93db` used as background for body.
 
-I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate my colour palette.
+I used [coolors.co](https://coolors.co/f9ed9f-ffffff-000000-1a68c7) to generate my colour palette.
 ![screenshot](documentation/color-pallete.jpg)
 
 
 ### Typography
-- [Nunito](https://fonts.google.com/specimen/Nunito)
+- [Nunito](https://fonts.google.com/specimen/Nunito) a not very popular font, imported from google fonts.
 
 ## User Stories
 
@@ -36,7 +36,7 @@ I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate 
 - As a new site user, I want to check their social media so that I can determine whether they are trustworthy.
 
 ### Returning Site Users
-- As a returning site user, I would like to find weather information easy and fast.
+- As a returning site user, I would like to find weather information easy, accurate and fast.
 
 ### Site Admin
 - As a site administrator, I should be able to help users find detailed weather information for the location they are looking for.
@@ -53,11 +53,11 @@ I used [coolors.co](https://coolors.co/ffff00-ffffff-000000-3b93db) to generate 
 ### Existing Features
 
 - **Feature #1** 
-First feature contains a search box, a country select element and a search button allowing users to search weather information based on city and country name.
+First feature contains a title, a search box, a country select element and a search button allowing users to search weather information based on city and country name.
 ![screenshot](documentation/feature-1.jpg)
 
 - **Feature #2**
-Feature two consists in displaying weather information and location on the map, elements beeing generated based on search action.
+Feature two consists in displaying weather information and a button with a 5 day forecast, and based on location searched, on the map will be pinned that city, elements being generated based on search action.
 ![screenshot](documentation/feature-2.jpg)
 
 - **Feature #3**
@@ -74,6 +74,8 @@ Technologies used to build this website are:
 - [HTML](https://en.wikipedia.org/wiki/HTML) used for the site content.
 - [CSS](https://en.wikipedia.org/wiki/CSS) used for the site design and layout.
 - [JavaScript](https://www.javascript.com) used for user interaction on the site.
+- [VsCode](https://en.wikipedia.org/wiki/CSS) used for local development.
+- [Google Chrome](https://en.wikipedia.org/wiki/CSS) web browser used for Developer Tools and Console.
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
 - [Tim Nelson](https://traveltimn.github.io/readme-builder) used to help generate the Markdown files.
@@ -84,10 +86,9 @@ Technologies used to build this website are:
 
 ## Deployment
 
-The site was deployed to GitHub Pages. The steps to deploy are as follows:
-- In the [GitHub repository](https://github.com/bubtroniq/weather-app), navigate to the Settings tab 
-- From the source section drop-down menu, select the **Main** Branch, then click "Save".
-- The page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+The site was deployed to Vercel, a free hosting platform. The steps to deploy are as follows:
+- In the Vercel dashboard you can link your [GitHub account](https://github.com/bubtroniq/weather-app) and a [GitHub repository](https://github.com/bubtroniq/weather-app) and deploy in one click with autoupdate for each change.
+![screenshot](documentation/vercel.jpg)
 
 The live link can be found [here](weather-app-bubtroniq.vercel.app)
 ### Local Deployment
