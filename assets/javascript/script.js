@@ -64,7 +64,7 @@ function search() {
     let countrySelect = document.getElementById("country");
     countryCode = countrySelect.value;
     countryName = countrySelect.options[countrySelect.selectedIndex].text;
-    city = `${city}, ${countryName}`;
+    city = `${city}, ${countryCode}`;
     fetchWeather(city);
     fetchForecast(city);
     if (cntry === "") {
