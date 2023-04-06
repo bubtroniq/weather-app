@@ -22,7 +22,55 @@ Return back to the [README.md](README.md) file.
 
 ## Browser Compatibility
 
+| Device | Screenshot | Notes |
+| --- | --- | --- |
+| Chrome  | ![screenshot](documentation/chrome-desktop1.jpg) | Works as expected |
+| Chrome  | ![screenshot](documentation/chrome-desktop2.jpg) | Works as expected |
+| Chrome  | ![screenshot](documentation/chrome-desktop3.jpg) | Works as expected |
+| Firefox  | ![screenshot](documentation/chrome-desktop1.jpg) | Works as expected |
+| Firefox  | ![screenshot](documentation/chrome-desktop2.jpg) | Works as expected |
+| Firefox  | ![screenshot](documentation/chrome-desktop3.jpg) | Works as expected |
+| Brave  | ![screenshot](documentation/brave-desktop1.jpg) | Works as expected |
+| Brave  | ![screenshot](documentation/brave-desktop2.jpg) | Works as expected |
+| Brave  | ![screenshot](documentation/brave-desktop3.jpg) | Works as expected |
+
 ## Responsiveness
+
+| Device | Screenshot | Notes |
+| --- | --- | --- |
+| Mobile (Samsung A33) | ![screenshot](documentation/mobile.jpg) | Works as expected |
+| Mobile (Samsung A33) | ![screenshot](documentation/mobile1.jpg) | Works as expected |
+| Mobile (Samsung A33) | ![screenshot](documentation/mobile2.jpg) | Works as expected |
+| Mobile (Samsung A33) | ![screenshot](documentation/mobile3.jpg) | Works as expected |
+| Mobile (Samsung A33) | ![screenshot](documentation/mobile4.jpg) | Works as expected |
+| Mobile (Samsung A33) | ![screenshot](documentation/mobile5.jpg) | Works as expected |
+| Chrome Mobile (DevTools) | ![screenshot](documentation/chrome-mobile1.jpg) | Works as expected |
+| Chrome Mobile (DevTools) | ![screenshot](documentation/chrome-mobile2.jpg) | Works as expected |
+| Chrome Mobile (DevTools) | ![screenshot](documentation/chrome-mobile3.jpg) | Works as expected |
+| Firefox Mobile (DevTools) | ![screenshot](documentation/firefox-mobile1.jpg) | Works as expected |
+| Firefox Mobile (DevTools) | ![screenshot](documentation/firefox-mobile2.jpg) | Works as expected |
+| Firefox Mobile (DevTools) | ![screenshot](documentation/firefox-mobile3.jpg) | Works as expected |
+| Brave Mobile (DevTools) | ![screenshot](documentation/brave-mobile1.jpg) | Works as expected |
+| Brave Mobile (DevTools) | ![screenshot](documentation/brave-mobile2.jpg) | Works as expected |
+| Brave Mobile (DevTools) | ![screenshot](documentation/brave-mobile3.jpg) | Works as expected |
+| Chrome Tablet (DevTools) | ![screenshot](documentation/chrome-tablet1.jpg) | Works as expected |
+| Chrome Tablet (DevTools) | ![screenshot](documentation/chrome-tablet2.jpg) | Works as expected |
+| Chrome Tablet (DevTools) | ![screenshot](documentation/chrome-tablet3.jpg) | Works as expected |
+| Firefox Tablet (DevTools) | ![screenshot](documentation/firefox-tablet1.jpg) | Works as expected |
+| Firefox Tablet (DevTools) | ![screenshot](documentation/firefox-tablet2.jpg) | Works as expected |
+| Firefox Tablet (DevTools) | ![screenshot](documentation/firefox-tablet3.jpg) | Works as expected |
+| Brave Tablet (DevTools) | ![screenshot](documentation/brave-tablet1.jpg) | Works as expected |
+| Brave Tablet (DevTools) | ![screenshot](documentation/brave-tablet2.jpg) | Works as expected |
+| Brave Tablet (DevTools) | ![screenshot](documentation/brave-tablet3.jpg) | Works as expected |
+| Chrome Desktop | ![screenshot](documentation/chrome-desktop1.jpg) | Works as expected |
+| Chrome Desktop | ![screenshot](documentation/chrome-desktop2.jpg) | Works as expected |
+| Chrome Desktop | ![screenshot](documentation/chrome-desktop3.jpg) | Works as expected |
+| Firefox Desktop | ![screenshot](documentation/chrome-desktop1.jpg) | Works as expected |
+| Firefox Desktop | ![screenshot](documentation/chrome-desktop2.jpg) | Works as expected |
+| Firefox Desktop | ![screenshot](documentation/chrome-desktop3.jpg) | Works as expected |
+| Brave Desktop | ![screenshot](documentation/brave-desktop1.jpg) | Works as expected |
+| Brave Desktop | ![screenshot](documentation/brave-desktop2.jpg) | Works as expected |
+| Brave Desktop | ![screenshot](documentation/brave-desktop3.jpg) | Works as expected |
 
 
 
@@ -38,7 +86,6 @@ Return back to the [README.md](README.md) file.
 
 ## Bugs
 
-
 - Alot of trial and error fetching both API's and displaying data on the go modifying DOM structure. - fixed/practicing fetch API data and destructuring objects + DOM manipulation practice and inspiration.
 - Had to setTimeout() on the changeBackground function to fix background picture in one click, otherwise 2 click requierd in order to set the proper background definded in switch statement. - fixed/no more background picture
 - Lots of issues with retrievieng coordinates from data object. - fixed/practicing fetch API data and destructuring objects + DOM manipulation practice and inspiration.
@@ -46,13 +93,6 @@ Return back to the [README.md](README.md) file.
 - Alot of errors to be managed when fetching API data. - fixed/catch errors with "try, catch syntax"
 - Background picture that is changing regarding description message needs fixing on mobile view.-fixed/no background picture anymore
 - On second+ search map is not updating the new location. - fixed
-- Markers from previous searches will remain pinned on map. - not fixed, minor bug not affecting functionality or UI
-
-
-
-### GitHub **Issues**
-
-
 
 ## Unfixed Bugs
 
